@@ -76,6 +76,30 @@ Or from the terminal: `npm i -g vercel`, then `vercel`.
 
 Or drag and drop the `dist/` folder (after `npm run build`) onto https://app.netlify.com/drop.
 
+### GitHub Pages
+A workflow (`.github/workflows/deploy.yml`) builds and deploys the site on every push to `main`.
+
+1. Create an empty repository on GitHub, e.g. `sabana-asmi-portfolio`.
+2. Push this folder to it:
+
+   ```bash
+   git init
+   git add .
+   git commit -m "Portfolio site"
+   git branch -M main
+   git remote add origin https://github.com/YOUR-USERNAME/sabana-asmi-portfolio.git
+   git push -u origin main
+   ```
+
+3. On GitHub, open the repository's **Settings → Pages**, and under **Build and deployment → Source**, choose **GitHub Actions**.
+4. Open the **Actions** tab. Re-run the "Deploy to GitHub Pages" workflow if the first run happened before step 3. When it turns green, the site is live at `https://YOUR-USERNAME.github.io/sabana-asmi-portfolio/`.
+
+The workflow sets the sub-path automatically from the repository name. If you name the repository `YOUR-USERNAME.github.io`, the site is served from the root instead: `https://YOUR-USERNAME.github.io/`.
+
+Optional contact-form delivery: add a repository secret named `VITE_FORMSPREE_ENDPOINT` under **Settings → Secrets and variables → Actions**.
+
+To update the site later, commit and `git push`. It redeploys automatically.
+
 ### After deploying
 Add your live URL to `index.html` as `<link rel="canonical" href="…">` and `<meta property="og:url" content="…">` for better SEO.
 
@@ -83,7 +107,7 @@ Add your live URL to `index.html` as `<link rel="canonical" href="…">` and `<m
 
 - Semantic sections with labelled headings, skip link, visible focus rings, ARIA on tabs, accordions, menu and form.
 - All motion respects `prefers-reduced-motion`. The cursor glow is only on mouse or trackpad devices.
-- No images to optimise except the SVG favicon. The mockups are pure HTML/CSS.
+- The only images are the SVG favicon and the WebP showcase banner (lazy-loaded with fixed dimensions). Phone mockups are pure HTML/CSS.
 
 ## Project structure
 

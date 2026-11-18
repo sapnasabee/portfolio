@@ -22,7 +22,7 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import { useState } from 'react';
-import { healthApps, healthAppsShowcase, type HealthApp } from '../data/content';
+import { asset, healthApps, healthAppsShowcase, type HealthApp } from '../data/content';
 import { onSpotlightMove, PhoneFrame, Reveal, SectionHeading } from './ui';
 
 type Theme = { icon: LucideIcon; text: string; bg: string; ring: string; glow: string; solid: string };
@@ -240,7 +240,7 @@ function AppPhone({ app }: { app: HealthApp }) {
       <PhoneFrame>
         {real ? (
           <img
-            src={app.screenshots[i]}
+            src={asset(app.screenshots[i])}
             alt={`${app.name} app screenshot ${i + 1} of ${app.screenshots.length}`}
             loading="lazy"
             decoding="async"

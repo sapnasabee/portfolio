@@ -5,6 +5,9 @@
  * if something isn't documented, it is left out.
  */
 
+/** Prefixes a /public path with the site's base URL, so links work on GitHub Pages sub-paths too. */
+export const asset = (path: string) => import.meta.env.BASE_URL + path.replace(/^\//, '');
+
 export const profile = {
   name: 'Sabana Asmi S',
   shortName: 'Sabana',
@@ -17,7 +20,7 @@ export const profile = {
   phoneHref: 'tel:+919384295189',
   linkedin: 'https://www.linkedin.com/in/sabana-asmi-sabeela/',
   linkedinHandle: 'sabana-asmi-sabeela',
-  resumeUrl: '/Sabana-Asmi-Resume.pdf',
+  resumeUrl: asset('/Sabana-Asmi-Resume.pdf'),
   resumeFileName: 'Sabana-Asmi-S-Resume.pdf',
 };
 
@@ -429,7 +432,7 @@ export type HealthApp = {
 };
 
 export const healthAppsShowcase = {
-  image: '/images/healthcare-apps-showcase.webp',
+  image: asset('/images/healthcare-apps-showcase.webp'),
   alt: 'Concept showcase of three Health Basix Android apps: HealthBasix Parent, Care Station and Wellness',
 };
 
